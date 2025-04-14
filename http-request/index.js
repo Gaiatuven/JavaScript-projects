@@ -3,43 +3,58 @@ const app = express();
 const port = 3000;
 
 // Serve static files from the 'public' directory
-app.use(express.static('public'));
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   res.send(`
       <!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Welcome!</title>
-        <style>
-          body {
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome!</title>
+    <style>
+        body {
             font-family: sans-serif;
             background: linear-gradient(to right, #ff99cc, #66ccff);
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column;
+            align-items: center; /* Center the hero section */
             min-height: 100vh;
             margin: 0;
-          }
-          .container {
+        }
+
+        .hero {
+            background-color: #f8f9fa;
+            padding: 60px 20px; /* Adjust vertical padding as needed */
+            margin: 100px auto; /* Center the hero section with top/bottom margin */
+            width: 80%;
+            max-width: 600px;
+            box-sizing: border-box; /* Include padding in width calculation */
+        }
+
+        .container {
             background-color: #fff;
-            margin: 20px;
             padding: 50px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             text-align: center;
-          }
-          h1 {
+            width: 100%; /* Make the container fill the hero's content area */
+            box-sizing: border-box; /* Include padding in width calculation */
+        }
+
+        h1 {
             color: #333;
             margin-bottom: 20px;
-          }
-          p {
+        }
+
+        p {
             color: #666;
             margin-bottom: 30px;
-          }
-          .button {
+        }
+
+        .button {
             display: inline-block;
             padding: 12px 24px;
             background-color: #007bff;
@@ -48,31 +63,45 @@ app.get("/", (req, res) => {
             border-radius: 6px;
             font-weight: bold;
             transition: background-color 0.3s ease;
-          }
-          .button:hover {
+        }
+
+        .button:hover {
             background-color: #0056b3;
-          }
-          .info {
+        }
+
+        .info {
             margin-top: 30px;
             font-size: 0.9em;
             color: #999;
-          }
-        </style>
-      </head>
-      <body>
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .hero .subheadline {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <search id="hero" class="hero">
         <div class="container">
-          <h1>Node with Express!</h1>
-          <p>
-            <img src=".http-request/NodeImage.jpg" alt="Node.js and Express.js Illustration">
-          </p>
-          <p>Node.js and Express.js offer a powerful and efficient solution for backend development. Their speed and lightweight nature enable rapid development and deployment. Leveraging JavaScript on both the front and back end streamlines workflows, while their non-blocking I/O architecture ensures high performance and scalability to handle demanding applications. Choose Node.js and Express.js for agile development, efficient resource utilization, and the ability to build robust and scalable backend systems.</p>
-          <a href="/home" class="button">Explore the App</a>
-          <div class="info">
-            This is just a simple welcome page. You can customize it further!
-          </div>
+            <h1>Build Powerful Web Applications with Node and Express</h1>
+            <p class="subheadline">Leverage the speed and flexibility of Node.js and the robust features of Express to build
+                high-performance web applications efficiently.
+            </p>
+            <a href="#" class="button">Learn More</a>
         </div>
-      </body>
-      </html>
+    </search>
+</body>
+
+</html>
     `);
 });
 
